@@ -26,6 +26,7 @@
     </footer>
 
     <div class="portfolio">
+
         <div class="container">
             <img src="mg.gif" alt="Design 2">
             <div class="caption">Motion Graphics - 1</div>
@@ -36,10 +37,13 @@
             <div class="caption">Motion Graphics - 2</div>
         </div>
 
+        
         <div class="container">
+            <a href="https://drive.google.com/drive/folders/1Jpw7KBYFZkmeWiARAoR6Bv7-moaPgFAL?usp=sharing" target="_blank" style="color:black;">
             <img src="gdicon.png" alt="drive">
-            <div class="caption">Mail me for more Motion Graphics and Video Editing work. (Link to Google Drive will be provided)</div>
+            <div class="caption">Request Drive Access</div></a>
         </div>
+        
 
     </div>
 
@@ -67,6 +71,11 @@
 
         containers.forEach(container => {
             container.onclick = function() {
+
+                // if (container.closest('a')) {
+                //     return; 
+                // }
+
                 modal.style.display = "block";
                 modalImg.src = this.getElementsByTagName("img")[0].src;
             }
