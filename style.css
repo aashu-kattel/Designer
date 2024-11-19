@@ -183,11 +183,11 @@ transform: rotate(-10deg);
 }
 @media (max-width: 480px) {
     .floating-nav {
-        padding: 4px 6px 9px 6px;
+        padding: 8px 10px 13px 10px;
     }
     .floating-nav a {
-        font-size: 10px;
-        padding: 0px 2px 1px 1px;
+        font-size: 12px;
+        padding: 0px 2px 0px 0px;
     }
 }
 
