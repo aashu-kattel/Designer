@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs | Aashutosh Kattel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+        .blog-main-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(221,36,118,0.3);
+            overflow: hidden;
+        }
+        .blog-left {
+            flex: 2;
+            min-width: 320px;
+            padding: 40px 30px 40px 40px;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+        .blog-right {
+            flex: 1;
+            min-width: 260px;
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            padding: 40px 20px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .blog-right h3 {
+            margin-top: 0;
+            font-size: 1.3em;
+            letter-spacing: 1px;
+        }
+        .blog-link {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 12px 10px;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.2s, transform 0.2s;
+            gap: 16px;
+        }
+        .blog-link:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-2px) scale(1.03);
+        }
+        .blog-link img {
+            width: 54px;
+            height: 54px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #fff;
+            margin-right: 10px;
+        }
+        .blog-link-text {
+            flex: 1;
+        }
+        /* Accordion styles */
+        .accordion {
+            width: 100%;
+        }
+        .accordion-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(221,36,118,0.07);
+            overflow: hidden;
+            border: 1px solid #ffe0f0;
+        }
+        .accordion-title {
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            color: #fff;
+            cursor: pointer;
+            padding: 18px 22px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .accordion-title:hover {
+            background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+        }
+        .accordion-content {
+            padding: 18px 22px;
+            background: #fff;
+            color: #333;
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+        .accordion-item.active .accordion-content {
+            display: block;
+        }
+        .accordion-arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+        .accordion-item.active .accordion-arrow {
+            transform: rotate(90deg);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @media (max-width: 900px) {
+            .blog-main-container {
+                flex-direction: column;
+            }
+            .blog-left, .blog-right {
+                min-width: 0;
+                padding: 28px 12px;
+            }
+            .blog-right {
+                border-radius: 0 0 20px 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            .blog-main-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            .blog-left, .blog-right {
+                padding: 18px 4vw;
+            }
+            .accordion-title, .accordion-content {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-main-container">
+        <!-- Left: Accordion Blogs -->
+        <div class="blog-left">
+            <h2 style="margin-top:0; color:#dd2476; letter-spacing:1px;">My Blogs</h2>
+            <div class="accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-title">
+                        How to Design Eye-Catching Thumbnails
+                        <span class="accordion-arrow">&#9654;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Learn the secrets to creating thumbnails that grab attention and boost your click-through rate. From color theory to typography, discover practical tips and tools for every designer.</p>
+                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        5 Essential Tools for Every Graphic Designer
+                        <span class="accordion-arrow">&#9654;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Figma</li>
+                            <li>Canva</li>
+                            <li>Unsplash</li>
+                        </ul>
+                        <p>Explore why these tools are must-haves and how they can streamline your workflow.</p>
+                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        Portfolio Tips: Stand Out as a Designer
+                        <span class="accordion-arrow">&#9654;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Discover how to curate your best work, write compelling project descriptions, and present your portfolio for maximum impact.</p>
+                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title">
+                        Motion Graphics: Getting Started
+                        <span class="accordion-arrow">&#9654;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>New to motion graphics? This guide covers the basics, from software choices to simple animation techniques you can try today.</p>
+                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="blog-right">
+            <h3>Recommended Reads & Posts</h3>
+            <a class="blog-link" href="https://www.linkedin.com/posts/aashutosh-kattel_apple-podcasts-20th-anniversary-design-absolutely-activity-7346561350854131713-_cbv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD4vuAsBu0XPeyDXRrNdiisbn8W1vEadmDw" target="_blank">
+                <img src="blog_apple.webp" alt="LinkedIn Post">
+                <div class="blog-link-text">
+                    <strong>Apple Podcasts' 20th Anniversary Design</strong><br>
+                    Aashutosh - LinkedIn Post
+                </div>
+            </a>
+            <a class="blog-link" href="https://www.linkedin.com/pulse/rise-build-public-transforming-career-growth-aashutosh-kattel-5iwzc" target="_blank">
+                <img src="blog3.webp" alt="UX Design">
+                <div class="blog-link-text">
+                    <strong>The Rise of "Build in Public"</strong><br>
+                    Aashutosh - Linkedin Article
+                </div>
+            </a>
+            <a class="blog-link" href="https://tmstuddio.com/about/aashutosh-kattel/" target="_blank">
+                <img src="aashutosh.webp" alt="Aashutosh TM Studio">
+                <div class="blog-link-text">
+                    <strong>TMStuddio</strong><br>
+                    Aashutosh - TM Studio
+                </div>
+            </a>
+            <a class="blog-link" href="https://www.linkedin.com/pulse/designing-multimedia-experience-aashutosh-kattel-phj7c" target="_blank">
+                <img src="blog2.webp" alt="Aashutosh LinkedIn">
+                <div class="blog-link-text">
+                    <strong>Designing the Multimedia Experience</strong><br>
+                    Aashutosh - Linkedin Article
+                </div>
+            </a>
+            <a class="blog-link" href="https://www.linkedin.com/pulse/creative-industrys-talent-paradox-why-we-need-aashutosh-kattel-xcdtc" target="_blank">
+                <img src="blog1.webp" alt="Aashutosh LinkedIn">
+                <div class="blog-link-text">
+                    <strong>The Creative Industry's Talent Paradox: Why We Need Specialization</strong><br>
+                    Aashutosh - Linkedin Article
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.accordion-title').forEach(title => {
+            title.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
