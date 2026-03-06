@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phase 0 of VFX | Aashutosh Kattel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon_b.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f5f5f5;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        /* Article Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 0.375rem 0.875rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #808080;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ol,
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: #d0d0d0;
+        }
+
+        .article-content li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content a {
+            color: #d4af37;
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+
+        .article-content a:hover {
+            opacity: 0.8;
+        }
+
+        /* Image Placeholders */
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: #3a3a3a;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        /* Quote/Highlight Box */
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #f5f5f5;
+        }
+
+        /* Share Section */
+        .share-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .share-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 1rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            background: #3a3a3a;
+            color: #f5f5f5;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .share-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            border-color: #d4af37;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin-top: 4rem;
+        }
+
+        .related-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5f5f5;
+            margin-bottom: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .related-card-image {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #d4af37 0%, #f0c419 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .related-card-content {
+            padding: 1rem;
+        }
+
+        .related-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            line-height: 1.4;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .article-meta {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .article-title {
+                font-size: 1.5rem;
+            }
+
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span>Aashutosh.vfx</span>
+            </a>
+            <a href="blogs.html" class="back-link">
+                <span>← Back to Blogs</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <!-- Article Header -->
+        <div class="article-header">
+            <span class="article-badge">VFX Learning</span>
+            <h1 class="article-title">Phase 0 of VFX: Understanding the Fundamentals</h1>
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">A</div>
+                    <span>Aashutosh Kattel</span>
+                </div>
+                <span>•</span>
+                <span>8 min read</span>
+                <span>•</span>
+                <span>March 6, 2026</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+            <h2>Color</h2>
+            <p>I'm transitioning deeper into the VFX space to refine my visual craft, and one thing has become very clear: strong understanding of Color Theory can truly control visuals and emotion.</p>
+
+            <p>During this phase, I came across this book by Designer/Illustrator Ashok Man Singh, and I was genuinely impressed by the depth of its concepts.</p>
+
+            <div class="image-placeholder"><img src="color.jpg" alt="Color Theory Book Cover"></div>
+
+            <p>Two ideas especially stood out to me:</p>
+
+            <ol>
+                <li><strong>Hritu anusar rangko prabhav</strong></li>
+                <li><strong>Sangitma rang ko prabhav</strong></li>
+            </ol>
+
+            <p>These perspectives made me realize that color is not just about palettes, it's about psychology, atmosphere, and emotional control.</p>
+
+            <p><a href="https://www.daraz.com.np/products/all-illustrated-information-book-on-color-ashok-man-singh-i163715016.html" target="_blank">Here's the link to purchase the book.</a></p>
+
+            <p>I watched this animated short film <strong><a href="https://www.youtube.com/watch?v=B4EPW7JUMTM&t=2s" target="_blank">FOREVERGREEN</a></strong> and what stood out to me wasn't just the animation, it was the use of color theory to build emotional and visual depth. I was recommended to observe this short film by a VFX Supervisor working in Nepali film industry.</p>
+
+            <div class="image-placeholder"><img src="recommendation-storyboard.png" alt="FOREVERGREEN Screenshot"></div>
+
+            <p>In this learning process I came across <strong>Adobe Color</strong>. Do check it out to learn practically about color harmony.</p>
+
+            <h2>Typography</h2>
+            <p>Typography is far more than choosing a stylish font. It is about integrating text seamlessly into a visual world. In visual effects, typography must feel like it belongs inside the scene, whether it's a cinematic title, a holographic interface, motion-tracked signage, or futuristic HUD elements. Good VFX typography enhances storytelling; poor typography breaks immersion instantly.</p>
+
+            <p>Typography enhances immersion and realism. In VFX, text often exists inside a 3D environment. If typography is poorly chosen or badly integrated, it immediately feels fake. However, when the font style matches the genre and the lighting, depth, and motion are aligned with the environment, the text feels like it truly belongs in that world.</p>
+
+            <h2>Lighting, shading & rendering</h2>
+            <p>Lighting in VFX is one of the most important elements that determines whether a shot feels believable or artificial. No matter how detailed a 3D model or simulation is, without proper lighting, shading, and rendering, the final result will not integrate naturally into live-action footage. Lighting is what connects digital elements to the real world.</p>
+
+            <div class="image-placeholder"><img src="lights&shadow.png" alt="Lighting Example Image"></div>
+
+            <p>Lighting defines mood, depth, realism, and focus. In VFX, artists must match the lighting conditions of the original footage. This includes direction of light, intensity, color temperature, softness, shadow quality, and environmental bounce light. If a 3D object is placed into a scene but the lighting direction does not match the practical light source, the illusion breaks immediately.</p>
+
+            <p>Image-Based Lighting (IBL) is commonly used, where HDRI maps captured on set help recreate real-world lighting conditions inside 3D software. This ensures that reflections, highlights, and shadows behave naturally.</p>
+
+            <div class="image-placeholder"><img src="hdri.png" alt="Image-Based Lighting Example"></div>
+
+            <p><a href="https://www.youtube.com/watch?v=3BSt5cnu4_Q&t=11s" target="_blank">Here's a recommended video from my side.</a></p>
+
+            <h3>My Journey into VFX</h3>
+            <p>Understanding color, lighting, and VFX concepts felt much more intuitive for me because I already had a foundation in cameras, Photoshop, and After Effects. Working with cameras taught me how light behaves in real environments, how exposure affects mood, how white balance shifts temperature, and how shadows define depth. Photoshop gave me hint of matte painting and after effects taught how to enhance realism with subtle details like grain and light wrap.</p>
+
+            <p>I moved into <strong>Element 3D</strong> to explore 3D inside After Effects. This was a turning point. Element 3D allowed me to work more deeply with lighting, reflections, materials, and 3D space. I started understanding how shaders respond to light, how environment maps affect reflections, and how different light types change the mood of a scene. I experimented with HDRI lighting, shadows, and render settings.</p>
+
+            <div class="video-placeholder">
+                <video controls width="100%" height="auto">
+    <source src="Sequence 01.mp4" type="video/mp4">
+    <source src="path/to/your/video.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+            </div>
+
+            <p>Now, I've stepped into <strong>Nuke</strong>. Moving from layer-based compositing to a node-based workflow completely changed how I approached shots.</p>
+
+            <div class="image-placeholder"><img src="nuke.png" alt="Nuke Node Graph Screenshot"></div>
+
+            <div class="highlight-box">
+                <p>I'm still learning. Still exploring. Still figuring things out.</p>
+            </div>
+
+            <p>Even after working with cameras, Photoshop, After Effects, Element 3D, and now stepping into Nuke, I don't see myself as someone who has "arrived." If anything, the more I learn, the more I realize how much there is to understand. VFX, lighting, color, compositing-it's an endless ocean. And that's what makes it exciting.</p>
+
+            <h3>The Importance of Unlearning</h3>
+            <p>One thing I've realized along this journey is that learning alone isn't enough. <strong>Unlearning is just as important.</strong></p>
+
+            <p>Unlearning means stepping back and asking:</p>
+
+            <ul>
+                <li>Why am I doing it this way?</li>
+                <li>Is this technically correct, or just familiar?</li>
+                <li>Is there a more realistic or efficient approach?</li>
+            </ul>
+
+            <p>Being "still learning" keeps me curious. It keeps ego out of the process. It reminds me that every project is an opportunity to improve.</p>
+
+            <p>In VFX and design, technology changes fast. Tools evolve. Workflows improve. Industry standards shift. If I stay rigid, I fall behind. If I stay curious, I grow. That is why the title reads "Phase 0 of VFX". Everything I've shared here are the fundamentals that needs to be super clear before diving deeper into VFX.</p>
+
+            <!-- Share Section -->
+            <div class="share-section">
+                <h4 class="share-title">Share this article</h4>
+                <div class="share-buttons">
+                    <button onclick="copyPageLink()" class="share-btn" id="copyBtn">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="related-posts">
+            <h3 class="related-title">Related Articles</h3>
+            <div class="related-grid">
+                <a href="#" class="related-card">
+                    <div class="related-card-image" style="background: linear-gradient(135deg, #e8b923 0%, #f5d547 100%);">3D Workflow</div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">From After Effects to Nuke</h4>
+                    </div>
+                </a>
+                <a href="#" class="related-card">
+                    <div class="related-card-image">Motion Graphics</div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Motion Graphics: Getting Started</h4>
+                    </div>
+                </a>
+                <a href="#" class="related-card">
+                    <div class="related-card-image" style="background: linear-gradient(135deg, #f4d03f 0%, #f9e79f 100%);">Color Theory</div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Understanding Color in Design</h4>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyPageLink() {
+            // Get the current page URL
+            const currentUrl = window.location.href;
+            
+            // Copy to clipboard using the modern clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    showCopyFeedback();
+                }).catch(() => {
+                    // Fallback for older browsers
+                    fallbackCopyToClipboard(currentUrl);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyToClipboard(currentUrl);
+            }
+        }
+
+        function fallbackCopyToClipboard(text) {
+            // Create a temporary text area
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback();
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy URL. Please copy manually: ' + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopyFeedback() {
+            const copyBtn = document.getElementById('copyBtn');
+            const originalText = copyBtn.textContent;
+            
+            // Change button text to show feedback
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = '#d4af37';
+            copyBtn.style.color = '#1a1a1a';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '#3a3a3a';
+                copyBtn.style.color = '#f5f5f5';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

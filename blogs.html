@@ -5,261 +5,595 @@
     <title>Blogs | Aashutosh Kattel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon_b.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #1a1a1a;
-            font-family: 'Segoe UI', Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            color: #222;
+            box-sizing: border-box;
         }
-        .blog-main-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 40px auto 0 auto;
+
+        body {
             background: #1a1a1a;
-            border-radius: 20px;
-            box-shadow: 0 4px 24px rgba(218, 221, 36, 0.3);
-            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f5f5f5;
+            line-height: 1.6;
         }
-        .blog-left {
-            flex: 2;
-            min-width: 320px;
-            padding: 40px 30px 40px 40px;
+
+        /* Header */
+        .header {
             background: #1a1a1a;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
-        .blog-right {
-            flex: 1;
-            min-width: 260px;
-            /* background: linear-gradient(90deg, #1a1a1a 10%, #d4af37 100%); */
-                background: #d4af37;
-            padding: 40px 20px;
-            color: #1a1a1a;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        .blog-right h3 {
-            margin-top: 0;
-            font-size: 1.3em;
-            letter-spacing: 1px;
-        }
-        .blog-link {
-            display: flex;
-            align-items: center;
-            background: rgba(255,255,255,0.2);
-            border-radius: 16px;
-            padding: 12px 10px;
-            text-decoration: none;
-            color: #1a1a1a;
-            transition: background 0.2s, transform 0.2s;
-            gap: 16px;
-        }
-        .blog-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px) scale(1.03);
-        }
-        .blog-link img {
-            width: 54px;
-            height: 54px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #fff;
-            margin-right: 10px;
-        }
-        .blog-link-text {
-            flex: 1;
-        }
-        /* Accordion styles */
-        .accordion {
-            width: 100%;
-        }
-        .accordion-item {
-            background: #fff;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 8px rgba(221,36,118,0.07);
-            overflow: hidden;
-            border: 1px solid #ffe0f0;
-        }
-        .accordion-title {
-            background: #d4af37;
-            color: #1a1a1a;
-            cursor: pointer;
-            padding: 18px 22px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border: none;
-            outline: none;
-            transition: background 0.2s;
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .accordion-title:hover {
-            background: #ffd240;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #d4af37;
+            text-decoration: none;
         }
-        .accordion-content {
-            padding: 18px 22px;
-            background: #fff;
-            color: #333;
+
+        .page-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #f5f5f5;
+        }
+
+        .nav {
             display: none;
-            animation: fadeIn 0.4s;
         }
-        .accordion-item.active .accordion-content {
-            display: block;
+
+        .btn-header {
+            display: none;
         }
-        .accordion-arrow {
-            font-size: 1.2em;
-            transition: transform 0.3s;
+
+        .mobile-menu-toggle {
+            display: none;
         }
-        .accordion-item.active .accordion-arrow {
-            transform: rotate(90deg);
+
+        /* Main Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
         }
-        @media (max-width: 900px) {
-            .blog-main-container {
+
+        /* Featured Post */
+        .featured-post {
+            background: #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .featured-post:hover {
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+            background: #3a3a3a;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .featured-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 0.375rem 0.875rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            color: #f5f5f5;
+        }
+
+        .featured-content p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: #d4af37;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.2s;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* Recent Posts Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5f5f5;
+        }
+
+        .view-all {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .view-all:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+        }
+
+        /* Blog Cards Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            background: #3a3a3a;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4af37 0%, #f0c419 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .blog-card-content {
+            padding: 1.25rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .blog-card-excerpt {
+            color: #b0b0b0;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: #808080;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #f5f5f5;
+            margin-bottom: 1.25rem;
+        }
+
+        .featured-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+            border-radius: 6px;
+            margin: 0 -0.5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .featured-item:last-child {
+            border-bottom: none;
+        }
+
+        .featured-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .featured-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .featured-item-content {
+            flex: 1;
+        }
+
+        .featured-item-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .featured-item-meta {
+            font-size: 0.75rem;
+            color: #808080;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .featured-image {
+                height: 250px;
+                font-size: 1.25rem;
+            }
+
+            .featured-content {
+                padding: 1.5rem;
+            }
+
+            .featured-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
                 flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
-            .blog-left, .blog-right {
-                min-width: 0;
-                padding: 28px 12px;
-            }
-            .blog-right {
-                border-radius: 0 0 20px 20px;
+
+            .view-all {
+                width: 100%;
+                text-align: center;
             }
         }
-        @media (max-width: 600px) {
-            .blog-main-container {
-                margin: 0;
-                border-radius: 0;
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem 1rem;
             }
-            .blog-left, .blog-right {
-                padding: 18px 4vw;
+
+            .featured-content h2 {
+                font-size: 1.25rem;
             }
-            .accordion-title, .accordion-content {
-                padding-left: 10px;
-                padding-right: 10px;
+
+            .blog-card-image {
+                height: 150px;
+            }
+
+            .btn-header {
+                padding: 0.375rem 1rem;
+                font-size: 0.8125rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .featured-badge {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="blog-main-container">
-        <!-- Left: Accordion Blogs -->
-        <div class="blog-left">
-            <h2 style="margin-top:0; color:#d4af37; letter-spacing:1px;">My Blogs</h2>
-            <div class="accordion">
-                <div class="accordion-item active">
-                    <div class="accordion-title">
-                        How to Design Eye-Catching Thumbnails
-                        <span class="accordion-arrow">&#9654;</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Learn the secrets to creating thumbnails that grab attention and boost your click-through rate. From color theory to typography, discover practical tips and tools for every designer.</p>
-                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-title">
-                        5 Essential Tools for Every Graphic Designer
-                        <span class="accordion-arrow">&#9654;</span>
-                    </div>
-                    <div class="accordion-content">
-                        <ul>
-                            <li>Adobe Photoshop</li>
-                            <li>Adobe Express</li>
-                            <li>and more...</li>
-                        </ul>
-                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-title">
-                        Portfolio Tips: Stand Out as a Designer
-                        <span class="accordion-arrow">&#9654;</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Discover how to curate your best work, write compelling project descriptions, and present your portfolio for maximum impact.</p>
-                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-title">
-                        Motion Graphics: Getting Started
-                        <span class="accordion-arrow">&#9654;</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>New to motion graphics? This guide covers the basics, from software choices to simple animation techniques you can try today.</p>
-                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
-                    </div>
-                    
-                </div>
-                <div class="accordion-item">
-                    <div class="accordion-title">
-                        AI - Game changer for Video Editing
-                        <span class="accordion-arrow">&#9654;</span>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Explore how AI is transforming video editing, from automated cuts to intelligent effects, and learn how to leverage these tools in your projects.</p>
-                        <a href="blogs.html" target="_blank" style="color:#dd2476; font-weight:bold; text-decoration:underline;">Read More &rarr;</a>
-                    </div>
-                    
-                </div>
-            </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span>Aashutosh.vfx</span>
+            </a>
+            <div class="page-title">Blog Section</div>
         </div>
+    </header>
 
+    <!-- Main Container -->
+    <div class="container">
+        <div class="blog-layout">
+            <!-- Main Content -->
+            <main>
+                <!-- Featured Post -->
+                <article class="featured-post">
+                    <div class="featured-image">
+                        <img src="wally.png" alt="How to Design Eye-Catching Thumbnails">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-badge">Featured</span>
+                        <h2>Phase 0 of VFX</h2>
+                        <p>Before the simulations.
+Before the explosions.
+Before the complex node graphs. There’s Phase 0.</p>
+                        <a href="blog-article.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
 
-        <div class="blog-right">
-            <h3>Recommended Reads & Posts</h3>
-            <a class="blog-link" href="https://www.linkedin.com/posts/aashutosh-kattel_apple-podcasts-20th-anniversary-design-absolutely-activity-7346561350854131713-_cbv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD4vuAsBu0XPeyDXRrNdiisbn8W1vEadmDw" target="_blank">
-                <img src="blog_apple.webp" alt="LinkedIn Post">
-                <div class="blog-link-text">
-                    <strong>Apple Podcasts' 20th Anniversary Design</strong><br>
-                    Aashutosh - LinkedIn Post
+                <!-- Recent Posts -->
+                <div class="section-header">
+                    <h2 class="section-title">Recent Blog Posts</h2>
+                    <a href="#all" class="view-all">All Posts</a>
                 </div>
-            </a>
-            <a class="blog-link" href="https://www.linkedin.com/pulse/rise-build-public-transforming-career-growth-aashutosh-kattel-5iwzc" target="_blank">
-                <img src="blog3.webp" alt="UX Design">
-                <div class="blog-link-text">
-                    <strong>The Rise of "Build in Public"</strong><br>
-                    Aashutosh - Linkedin Article
-                </div>
-            </a>
-            
-            <a class="blog-link" href="https://www.linkedin.com/pulse/designing-multimedia-experience-aashutosh-kattel-phj7c" target="_blank">
-                <img src="blog2.webp" alt="Aashutosh LinkedIn">
-                <div class="blog-link-text">
-                    <strong>Designing the Multimedia Experience</strong><br>
-                    Aashutosh - Linkedin Article
-                </div>
-            </a>
-            <a class="blog-link" href="https://www.linkedin.com/pulse/creative-industrys-talent-paradox-why-we-need-aashutosh-kattel-xcdtc" target="_blank">
-                <img src="blog1.webp" alt="Aashutosh LinkedIn">
-                <div class="blog-link-text">
-                    <strong>The Creative Industry's Talent Paradox: Why We Need Specialization</strong><br>
-                    Aashutosh - Linkedin Article
-                </div>
-            </a>
 
+                <div class="posts-grid">
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="essential-tools-graphics-design.png" alt="5 Essential Tools">
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">Essential Tools for Every Graphic Designer</h3>
+                            <p class="blog-card-excerpt">Adobe Photoshop, Adobe Express, and more essential tools that every graphic designer need & should master.</p>
+                            <div class="blog-card-meta">
+                                <div class="author-avatar">A</div>
+                                <span>Aashutosh Kattel</span>
+                                <span>•</span>
+                                <span>3 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="portfolio-tips.png" alt="Portfolio Tips">
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">Portfolio Tips: Stand Out as a Designer</h3>
+                            <p class="blog-card-excerpt">Discover how to curate your best work, write compelling project descriptions, and present your portfolio for maximum impact.</p>
+                            <div class="blog-card-meta">
+                                <div class="author-avatar">A</div>
+                                <span>Aashutosh Kattel</span>
+                                <span>•</span>
+                                <span>4 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="motion-graphics-gettingStarted.png" alt="Motion Graphics">
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">Motion Graphics: Getting Started</h3>
+                            <p class="blog-card-excerpt">New to motion graphics? This guide covers the basics, from software choices to simple animation techniques you can try today.</p>
+                            <div class="blog-card-meta">
+                                <div class="author-avatar">A</div>
+                                <span>Aashutosh Kattel</span>
+                                <span>•</span>
+                                <span>20 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img src="ai-for-video-editing.png" alt="AI in Video Editing">
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-card-title">AI - Game changer for Video Editing</h3>
+                            <p class="blog-card-excerpt">Explore how AI is transforming video editing, from automated cuts to intelligent effects, and learn how to leverage these tools in your projects.</p>
+                            <div class="blog-card-meta">
+                                <div class="author-avatar">A</div>
+                                <span>Aashutosh Kattel</span>
+                                <span>•</span>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Other featured posts</h3>
+                    
+                    <a href="https://www.linkedin.com/posts/aashutosh-kattel_apple-podcasts-20th-anniversary-design-absolutely-activity-7346561350854131713-_cbv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD4vuAsBu0XPeyDXRrNdiisbn8W1vEadmDw" target="_blank" class="featured-item">
+                        <img src="blog_apple.webp" alt="Apple Podcasts" class="featured-item-image">
+                        <div class="featured-item-content">
+                            <div class="featured-item-title">Apple Podcasts' 20th Anniversary Design</div>
+                            <div class="featured-item-meta">Aashutosh - LinkedIn Post</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/pulse/rise-build-public-transforming-career-growth-aashutosh-kattel-5iwzc" target="_blank" class="featured-item">
+                        <img src="blog3.webp" alt="Build in Public" class="featured-item-image">
+                        <div class="featured-item-content">
+                            <div class="featured-item-title">The Rise of "Build in Public"</div>
+                            <div class="featured-item-meta">Aashutosh - LinkedIn Article</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/pulse/designing-multimedia-experience-aashutosh-kattel-phj7c" target="_blank" class="featured-item">
+                        <img src="blog2.webp" alt="Multimedia Experience" class="featured-item-image">
+                        <div class="featured-item-content">
+                            <div class="featured-item-title">Designing the Multimedia Experience</div>
+                            <div class="featured-item-meta">Aashutosh - LinkedIn Article</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/pulse/creative-industrys-talent-paradox-why-we-need-aashutosh-kattel-xcdtc" target="_blank" class="featured-item">
+                        <img src="blog1.webp" alt="Talent Paradox" class="featured-item-image">
+                        <div class="featured-item-content">
+                            <div class="featured-item-title">The Creative Industry's Talent Paradox: Why We Need Specialization</div>
+                            <div class="featured-item-meta">Aashutosh - LinkedIn Article</div>
+                        </div>
+                    </a>
+                </div>
+            </aside>
         </div>
     </div>
-    
-    <script>
-        document.querySelectorAll('.accordion-title').forEach(title => {
-            title.addEventListener('click', function() {
-                const item = this.parentElement;
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
-            });
-        });
-    </script>
 </body>
 </html>
