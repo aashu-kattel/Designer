@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creative Mindset of Balen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon_b.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f5f5f5;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            color: #d4af37;
+        }
+
+        /* Article Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 0.375rem 0.875rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #808080;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ol,
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            color: #d0d0d0;
+        }
+
+        .article-content li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content a {
+            color: #d4af37;
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+
+        .article-content a:hover {
+            opacity: 0.8;
+        }
+
+        /* Image Placeholders */
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: #3a3a3a;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        /* Quote/Highlight Box */
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #f5f5f5;
+        }
+
+        /* Share Section */
+        .share-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .share-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            margin-bottom: 1rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            background: #3a3a3a;
+            color: #f5f5f5;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .share-btn:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            border-color: #d4af37;
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin-top: 4rem;
+        }
+
+        .related-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5f5f5;
+            margin-bottom: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+
+        .related-card-image {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #d4af37 0%, #f0c419 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .related-card-content {
+            padding: 1rem;
+        }
+
+        .related-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f5f5f5;
+            line-height: 1.4;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #4a4a4a 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .article-meta {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .article-title {
+                font-size: 1.5rem;
+            }
+
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <span>Aashutosh.vfx</span>
+            </a>
+            <a href="blogs.html" class="back-link">
+                <span>← Back to Blogs</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Article Container -->
+    <div class="container">
+        <!-- Article Header -->
+        <div class="article-header">
+            <span class="article-badge">Learnings from Balen's Journey</span>
+            <h1 class="article-title">The Creative Mindset of Balen Shah</h1>
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">A</div>
+                    <span>Aashutosh Kattel</span>
+                </div>
+                <span>•</span>
+                <span>4 min read</span>
+                <span>•</span>
+                <span>March 7, 2026</span>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+            <h2>What Designers and Editors Can Learn From His Journey</h2>
+            <div class="image-placeholder"><img src="Balen's Journey.jpg" alt="Color Theory Book Cover"></div>
+            <p>
+                In creative fields, one of the most powerful abilities a person can develop is the courage to reinvent themselves. Careers in design, filmmaking, motion graphics, or editing rarely follow a straight line. Instead, they evolve through curiosity, experimentation, and the willingness to explore new paths. The journey of Balen Shah is a compelling example of this kind of evolution. His path from civil engineer to rapper, and later to <strong>mayor of Kathmandu Metropolitan City</strong> may seem unusual at first glance. Yet, when viewed through the lens of creativity, it reflects many of the same principles that drive designers and creators: adaptability, authentic expression, and the courage to break traditional boundaries.
+            </p>
+            <p>
+                Balen Shah began his professional life as a civil engineer, a field rooted in analytical thinking and structured problem solving. Engineering trains the mind to approach complex challenges with logic and precision. However, instead of remaining confined to a single discipline, he explored another dimension of expression i.e music. Entering<strong> Nepal’s hip-hop scene</strong>, he developed a voice as a rapper, using lyrics to comment on social realities, youth frustrations, and the urban experience. This transition highlights an important lesson for creatives: your initial skill set does not define your final destination. Designers often begin with one discipline-graphic design, for example and later evolve into motion designers, VFX artists, or creative directors. Growth in creative industries often comes from exploring multiple domains and allowing different skills to influence each other.
+            </p>
+            <p>
+                Another defining element of Balen Shah’s journey is authenticity. In hip-hop culture, artists connect with audiences when their message feels genuine and grounded in real experiences. Balen’s music resonated with many listeners because it addressed real issues without excessive polish or pretense. That same authenticity later became one of the reasons people connected with him as a political leader. For designers and editors, authenticity translates into developing a unique creative voice. In an era where trends spread rapidly across social media, it can be tempting to replicate styles that are already popular. However, the most memorable creative work usually emerges when creators develop their own perspective and visual language. Authenticity in design is not only about aesthetics; it is about expressing ideas in a way that feels honest and intentional. His journey also demonstrates how creativity and problem-solving intersect. Engineering provided a foundation of logical thinking, while music offered a medium for emotional and cultural expression. Leadership, on the other hand, demands the ability to balance both making strategic decisions while communicating ideas clearly to the public. His poetry collection, <strong>Ashra</strong>, reflects another dimension of his creative expression, revealing how ideas can travel across different artistic mediums from lyrics to poetry to public communication.
+            </p>
+            <p>
+                When Balen Shah ran in the 2022 Kathmandu mayoral election and eventually became the mayor of Kathmandu, he carried with him this blend of structured thinking and creative communication. For designers and editors, this combination is equally important. Design is often misunderstood as purely visual decoration, but at its core it is about solving communication problems. A good design guides attention, clarifies complex ideas, and tells a story effectively. Creativity becomes powerful when it is supported by structure and intention.
+            </p>
+            <p>
+                Another striking aspect of his journey is the willingness to<strong> challenge traditional pathways</strong>. Before the 2022 election, many people believed that leadership in Nepal’s major cities would remain dominated by established political parties. Balen Shah’s independent candidacy disrupted that assumption. His victory illustrated how individuals with unconventional backgrounds can reshape established systems. This idea strongly parallels the evolution happening in creative industries today. Designers, filmmakers, and editors are no longer limited to traditional career ladders. With the rise of digital platforms, many creators build independent audiences, launch personal projects, or transform freelance careers into influential creative brands. Just as political structures can change through new voices, creative industries also evolve when individuals challenge conventional expectations.
+            </p>
+            <p>
+                Perhaps the most valuable lesson designers and editors can take from Balen Shah’s story is the importance of experimentation. Each phase of his career required stepping into unfamiliar territory. Engineering required discipline and technical knowledge, music required artistic expression, and leadership demanded vision and responsibility. None of these transitions were guaranteed to succeed, yet they illustrate how progress often comes from taking risks. Creative professionals face similar moments when deciding whether to learn new tools, explore unfamiliar artistic styles, or move into new areas such as VFX, storytelling, or creative direction. Innovation rarely emerges from comfort; it emerges from curiosity and the willingness to experiment.
+            </p>
+            <p>
+                Ultimately, the story of Balen Shah is more than a political narrative. It is an example of how individuals can evolve by continuously redefining their identity and expanding their capabilities. For designers, editors, and creators, the lesson is clear: do not confine yourself to a single label. Allow your interests to grow, explore disciplines that inspire you, and develop a creative voice that reflects your perspective. In both creativity and leadership, the people who shape the future are often those who are willing to reinvent themselves and pursue paths that others might initially consider unconventional.
+            </p>
+
+            <!-- Share Section -->
+            <div class="share-section">
+                <h4 class="share-title">Share this article</h4>
+                <div class="share-buttons">
+                    <button onclick="copyPageLink()" class="share-btn" id="copyBtn">Copy Link</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="related-posts">
+            <h3 class="related-title">Related Articles</h3>
+            <div class="related-grid">
+                <a href="blog-article.html" class="related-card">
+                    <div class="related-card-image" style="background: linear-gradient(135deg, #e8b923 0%, #f5d547 100%);">VFX Learning</div>
+                    <div class="related-card-content">
+                        <h4 class="related-card-title">Phase 0 of VFX</h4>
+                    </div>
+                </a>      
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyPageLink() {
+            // Get the current page URL
+            const currentUrl = window.location.href;
+            
+            // Copy to clipboard using the modern clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    showCopyFeedback();
+                }).catch(() => {
+                    // Fallback for older browsers
+                    fallbackCopyToClipboard(currentUrl);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopyToClipboard(currentUrl);
+            }
+        }
+
+        function fallbackCopyToClipboard(text) {
+            // Create a temporary text area
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback();
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy URL. Please copy manually: ' + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopyFeedback() {
+            const copyBtn = document.getElementById('copyBtn');
+            const originalText = copyBtn.textContent;
+            
+            // Change button text to show feedback
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = '#d4af37';
+            copyBtn.style.color = '#1a1a1a';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '#3a3a3a';
+                copyBtn.style.color = '#f5f5f5';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
