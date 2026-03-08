@@ -675,6 +675,90 @@ footer p {
     transform: translateY(0);
 }
 
+/* YouTube Videos Section */
+.youtube-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.youtube-video {
+    background: var(--secondary-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 245, 245, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.youtube-video:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 1.5rem;
+}
+
+.video-info h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.video-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive design for YouTube grid */
+@media (max-width: 1200px) {
+    .youtube-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .youtube-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .video-info {
+        padding: 1.25rem;
+    }
+    
+    .video-info h4 {
+        font-size: 1.1rem;
+    }
+    
+    .video-info p {
+        font-size: 0.9rem;
+    }
+}
+
 /* Custom Scrollbar */
 /* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
@@ -905,6 +989,48 @@ body {
                     <p>UI designs using Adobe XD</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section id="videos" class="fade-in">
+        <h2 class="section-title">Follow my <span>Tutorials</span></h2>
+        <div class="youtube-grid">
+            <div class="youtube-video">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/37ldaUMkrCw?si=Dib_gz2OipSlQvzO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Premiere Pro Tutorial</h4>
+                    <p>Interpret footage in Premiere Pro</p>
+                </div>
+            </div>
+            
+            <div class="youtube-video">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WS-5EaIim-A?si=plaBuVPnYctppHkI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h4>After Effects Tutorial</h4>
+                    <p>Shiny Metallic text in After Effects - Under 1 Minute</p>
+                </div>
+            </div>
+            
+            <div class="youtube-video">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h4>Video Title 3</h4>
+                    <p>Brief description of your third video</p>
+                </div>
+            </div>    
         </div>
     </section>
 
