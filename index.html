@@ -347,54 +347,94 @@ section {
     line-height: 1.7;
 }
 
-/* Clients Marquee */
+/* Clients Marquee — Multi-row */
 .clients-section {
     background: var(--secondary-bg);
-    padding: 4rem 0;
+    padding: 3.5rem 0;
     overflow: hidden;
     border-top: 1px solid rgba(245, 245, 245, 0.05);
     border-bottom: 1px solid rgba(245, 245, 245, 0.05);
+    position: relative;
+}
+
+/* Fade edges */
+.clients-section::before,
+.clients-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 160px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.clients-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--secondary-bg) 0%, transparent 100%);
+}
+.clients-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--secondary-bg) 0%, transparent 100%);
+}
+
+.marquee-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 .marquee {
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: 5rem;
+    padding: 6px 0;
 }
 
 .marquee-content {
     flex-shrink: 0;
     display: flex;
-    gap: 5rem;
-    min-width: 100%;
-    animation: scroll 30s linear infinite;
+    gap: 1rem;
+    padding-right: 1rem;
+    animation: scroll-right 28s linear infinite;
+}
+
+.marquee.reverse .marquee-content {
+    animation: scroll-left 28s linear infinite;
 }
 
 .client-logo {
-    height: 70px;
-    width: 160px;
-    background: rgba(245, 245, 245, 0.03);
+    height: 52px;
+    padding: 0 1.6rem;
+    white-space: nowrap;
+    background: rgba(245, 245, 245, 0.04);
     border: 1px solid rgba(245, 245, 245, 0.08);
-    border-radius: 0;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    transition: all 0.4s ease;
+    transition: all 0.35s ease;
     font-weight: 500;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
 }
 
 .client-logo:hover {
-    background: rgba(212, 175, 55, 0.08);
-    border-color: var(--accent-gold);
-    color: var(--text-primary);
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.5);
+    color: var(--accent-gold);
+    transform: scale(1.04);
 }
 
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+@keyframes scroll-right {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-left {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
 }
 
 /* Bento Grid Gallery */
@@ -641,9 +681,9 @@ footer p {
     }
 
     .client-logo {
-        height: 60px;
-        width: 130px;
-        font-size: 0.85rem;
+        height: 44px;
+        font-size: 0.82rem;
+        padding: 0 1.1rem;
     }
 
     .social-btn {
@@ -906,35 +946,144 @@ body {
     </section>
 
     <div class="clients-section">
-        <div class="marquee">
-            <div class="marquee-content">
-                <div class="client-logo">Ultima Lifestyle</div>
-                <div class="client-logo">Preeti ChowChow</div>
-                <div class="client-logo">Hyundai</div>
-                <div class="client-logo">Gogoro E-Scooter</div>
-                <div class="client-logo">Bajaj</div>
-                <div class="client-logo">UNION PAY </div>
-                <div class="client-logo">Honor</div>
-                <div class="client-logo">Huawei</div>
-                <div class="client-logo">Shubharambha TV</div>
-                <div class="client-logo">Dr. Casuel Pitts</div>
-                <div class="client-logo">Bombay Shaving</div>
-                <div class="client-logo">Xtreme</div>
+        <div class="marquee-rows">
+
+            <!-- Row 1: scroll right -->
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Honor</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Honor</div>
+                </div>
             </div>
-            <div class="marquee-content" aria-hidden="true"> 
-                <div class="client-logo">Ultima Lifestyle</div>
-                <div class="client-logo">Preeti ChowChow</div>
-                <div class="client-logo">Hyundai</div> 
-                <div class="client-logo">Gogoro E-Scooter</div>
-                <div class="client-logo">Bajaj</div>
-                <div class="client-logo">UNION PAY </div>
-                <div class="client-logo">Honor</div>
-                <div class="client-logo">Huawei</div>
-                <div class="client-logo">Shubharambha TV</div>
-                <div class="client-logo">Dr. Casuel Pitts</div>
-                <div class="client-logo">Bombay Shaving</div>
-                <div class="client-logo">Xtreme</div>
+
+            <!-- Row 2: scroll left -->
+            <div class="marquee reverse">
+                <div class="marquee-content">
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Nissan</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Honor</div>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Honor</div>
+                </div>
             </div>
+
+            <!-- Row 3: scroll right -->
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Nissan</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                </div>
+            </div>
+
+            <!-- Row 4: scroll left -->
+            <div class="marquee reverse">
+                <div class="marquee-content">
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Nissan</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <div class="client-logo">Dr. Casuel Pitts</div>
+                    <div class="client-logo">Bombay Shaving</div>
+                    <div class="client-logo">Bajeko Sekuwa</div>
+                    <div class="client-logo">Hyundai</div>
+                    <div class="client-logo">Bajaj</div>
+                    <div class="client-logo">Gogoro E-Scooter</div>
+                    <div class="client-logo">Union Pay</div>
+                    <div class="client-logo">Huawei</div>
+                    <div class="client-logo">Shubharambha TV</div>
+                    <div class="client-logo">Xtreme</div>
+                    <div class="client-logo">Ultima Lifestyle</div>
+                    <div class="client-logo">Preeti ChowChow</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
