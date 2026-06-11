@@ -226,6 +226,50 @@ nav {
     color: var(--text-primary);
 }
 
+.freelance-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent-gold);
+    border-radius: 999px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
+    transition: all 0.35s ease;
+    background: transparent;
+}
+
+.freelance-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+    color: var(--accent-gold);
+}
+
+.freelance-btn-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55);
+    animation: pulseDot 1s ease-out infinite;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55);
+    }
+    70% {
+        box-shadow: 0 0 0 7px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -875,7 +919,13 @@ body {
                 Video Editor &<br>
                 <span class="highlight">Motion Graphics Designer</span>
             </h1>
-            <p>Crafting stories through the art of editing and motion design</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMNwA9Be9d4Ids6iwJGPvlnWQjyfsc7oX5XGE1zshN2mkMqA/viewform?usp=publish-editor" class="freelance-btn" target="_blank" rel="noopener noreferrer">
+                <span class="freelance-btn-dot" aria-hidden="true"></span>
+                Available for Freelance
+            </a>
+            <br>
+            <br>
+            <br>
             <div class="cta-buttons">
                 <a href="https://github.com/aashu-kattel/Foxt" class="btn btn-primary">Download my FREE Text Animation Plugin [Ae]</a>
             </div>
